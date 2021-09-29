@@ -29,6 +29,7 @@ class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   final _saved = <WordPair>{};
   final _biggerFont = const TextStyle(fontSize: 18.0);
+  var _title = Text("Cnange me");
 
   Widget _buildSuggestions() {
     return ListView.builder(
@@ -101,10 +102,19 @@ class _RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Startup Name Generator'),
+        title: _title,
         actions: [
           IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          setState(() {
+            _title = Text("Hello");
+          });
+        },
       ),
       body: _buildSuggestions(),
     );
